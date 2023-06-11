@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/10 14:33:56 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:17:15 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,18 @@ typedef struct s_stack
 // llists
 void		ft_create_stack(int ac, char *av[]);
 t_stack		*ft_addback(t_stack *head, int new_value);
-t_stack		*ft_addfront(t_stack *head, int new_value);
 void		ft_print_list(t_stack *s1, t_stack *s2);
 t_stack		*ft_free_stack(t_stack *s_a);
 
 // operations
 void		sa_sb(t_stack *head);
-void		ss(t_stack *s1, t_stack *s2);
+void		ss(t_stack *s_a, t_stack *s_b);
 void		pa(t_stack **s_a, t_stack **s_b);
 void		pb(t_stack **s_a, t_stack **s_b);
 void		ra_rb(t_stack *head);
-void		rr(t_stack *s1, t_stack *s2);
+void		rr(t_stack *s_a, t_stack *s_b);
 void		rra_rrb(t_stack *head);
-void		rrr(t_stack *s1, t_stack *s2);
+void		rrr(t_stack *s_a, t_stack *s_b);
 
 // utils
 int			ft_checker(int ac, char *av[]);

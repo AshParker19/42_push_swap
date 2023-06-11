@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/10 14:58:16 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/11 21:44:35 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,52 @@
 
 void	ft_create_stack(int ac, char *av[])
 {
-	t_stack 	*s_a;
-	t_stack		*s_b;
+	t_stack 	*stack_a;
+	t_stack		*stack_b;
 	int			i;
 
-	s_a = NULL;
-	s_b = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	i = 0;
 	while (++i < ac)
-		s_a = ft_addback(s_a, ft_atoi(av[i]));
-	pb(&s_a, &s_b);
-	pb(&s_a, &s_b);
-	pb(&s_a, &s_b);
-	// pb(&s_a, &s_b);
-	// pa(&s_a, &s_b);
-	// pa(&s_a, &s_b);
-	// pa(&s_a, &s_b);
+		stack_a = ft_addback(stack_a, ft_atoi(av[i]));
+	// pb(&stack_a, &stack_b);
+	// pb(&stack_a, &stack_b);
+	// pb(&stack_a, &stack_b);
+	// pb(&stack_a, &stack_b);
+	// pb(&stack_a, &stack_b);
+	// pa(&stack_a, &stack_b);
+	// pa(&stack_a, &stack_b);
+	// pa(&stack_a, &stack_b);
+	// pa(&stack_a, &stack_b);
 	
-	// sa_sb(s_a);
-	// sa_sb(s_b);
-	// ss(s_a, s_b);
-	// ra_rb(s_a);
-	// ra_rb(s_b);
-	// rr(s_a, s_b);
-	// rra_rrb(s_a);
-	// rra_rrb(s_b);
-	// rrr(s_a, s_b);
-	ft_print_list(s_a, s_b);
-	// s_a = ft_free_stack(s_a);
-	// s_b = ft_free_stack(s_b);	
+	// sa_sb(stack_a);
+	// sa_sb(stack_b);
+	// ss(stack_a, stack_b);
+	
+	// ra_rb(stack_a);
+	// ra_rb(stack_b);
+	// rr(stack_a, stack_b);
+	// rra_rrb(stack_a);
+	// rra_rrb(stack_b);
+	// rrr(stack_a, stack_b);
+	
+	ft_print_list(stack_a, stack_b);
+	stack_a = ft_free_stack(stack_a);
+	stack_b = ft_free_stack(stack_b);
 }
 
-void	ft_print_list(t_stack *s1, t_stack *s2)
+void	ft_print_list(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack *current_a = s1;
-	t_stack *current_b = s2;
+	t_stack *current_a = stack_a;
+	t_stack *current_b = stack_b;
 	
 	printf(YELLOW"╔═══════════════╗\n"RESET);
 	printf(PURPLE"        A        \n"RESET);
 	if (!current_a)
 		printf(RED"     EMPTY!!\n" RESET);
+	else if (!current_a->next && !current_a->prev)
+		printf(RED"    ONLY HEAD\n"RESET);	
 	while (current_a)
 	{
 		printf(GREEN" CURRENT_A NUM %d\n"RESET, current_a->value);
@@ -75,6 +81,8 @@ void	ft_print_list(t_stack *s1, t_stack *s2)
 	printf(PURPLE"        B        \n"RESET);
 	if (!current_b)
 		printf(RED"     EMPTY!!\n"RESET);
+	else if (!current_b->next && ! current_b->prev)
+		printf(RED"    ONLY HEAD\n"RESET);	
 	while (current_b)
 	{
 		printf(GREEN" CURRENT_B NUM %d\n"RESET, current_b->value);
@@ -109,26 +117,9 @@ t_stack	*ft_addback(t_stack *head, int new_value)
 			current = current->next;
 		current->next = new;
 		new->prev = current;
-		return (head);	
+		return (head);
 	}	
 }
-
-t_stack	*ft_addfront(t_stack *head, int new_value)
-{
-	t_stack	*new;
-
-	new = ft_calloc(1, sizeof(t_stack));
-	new->value = new_value;
-	if (!head)
-		return (new);
-	else
-	{
-		new->next = head;
-		head->prev = new;
-		return (new);
-	}	
-}
-
 
 t_stack	*ft_free_stack(t_stack *st)
 {
