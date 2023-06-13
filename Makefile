@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -g
+CFLAGS =  -g
 
 SRC := $(wildcard *.c)
 
@@ -20,10 +20,11 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $^ -o $@
-	@rm -rf $(OBJ) # remove this shit
+	@rm -rf $(OBJ) # !!! remove this shit !!!
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo -n "$(GREEN)⬤ $(BLUE)⬤ $(ORANGE)⬤ $(DEF)"
 
 clean:
 		@rm -f $(OBJ)

@@ -6,19 +6,13 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 13:56:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/11 21:23:55 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:23:30 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rr(t_stack *s_a, t_stack *s_b)
-{
-	ra_rb(s_a);
-	ra_rb(s_b);
-}
-
-void	rra_rrb(t_stack *head)
+void	rra_rrb(t_stack *head, int flag)
 {
 	t_stack	*current;
 	int		last_orig;
@@ -35,11 +29,19 @@ void	rra_rrb(t_stack *head)
 			current = current->prev;
 		}
 		current->value = last_orig;
+		if (flag)
+		{
+			if (flag == STACK_A)
+				ft_putstr("rra\n");
+			else
+				ft_putstr("rrb\n");
+		}
 	}
 }
 
 void	rrr(t_stack *s_a, t_stack *s_b)
 {
-	rra_rrb(s_a);
-	rra_rrb(s_b);
+	rra_rrb(s_a, 0);
+	rra_rrb(s_b, 0);
+	ft_putstr("rrr\n");
 }
