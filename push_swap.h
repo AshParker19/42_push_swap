@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/13 18:24:48 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:30:36 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define INVALID_INT 	2
 
 // stacks flags
+# define NEUTRAL		0
 # define STACK_A 		1
 # define STACK_B 		2
 
@@ -38,6 +39,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }				t_stack;
@@ -65,7 +67,7 @@ void		rra_rrb(t_stack *head, int flag);
 void		rrr(t_stack *s_a, t_stack *s_b);
 
 // sort 
-void	ft_sort(t_store store);
+void		ft_sort(t_store store);
 
 // utils
 int			ft_valid(int ac, char *av[]);
@@ -74,6 +76,7 @@ int			ft_checker2(int ac, char *av[]);
 int			ft_numeric(char *str);
 void		ft_putstr(char *str);
 int			ft_check_if_sorted(t_stack *head);
+char		*ft_ternary(int condition, char *expression1, char *expression2);
 
 // libft
 long int	ft_atoi(const char *nptr);

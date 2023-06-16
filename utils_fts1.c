@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:16:19 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/12 14:45:06 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:33:39 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 int	ft_valid(int ac, char *av[])
 {
 	if (ac == 1 || (ac == 2 && ft_numeric(av[1])
-			&& (ft_atoi(av[1]) > INT_MIN && ft_atoi(av[1]) < INT_MAX) && *av[1]))
+			&& (ft_atoi(av[1]) > INT_MIN
+				&& ft_atoi(av[1]) < INT_MAX) && *av[1]))
 		return (1);
-	return (0);		
+	return (0);
 }
 
 int	ft_numeric(char *str)
@@ -87,7 +88,7 @@ int	ft_check_if_sorted(t_stack *head)
 	{
 		if (current->value > current->next->value)
 			return (0);
-		current = current->next;		
+		current = current->next;
 	}
 	return (1);
 }

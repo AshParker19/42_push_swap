@@ -14,7 +14,7 @@ GREEN  = 	\033[0;32m
 ORANGE = 	\033[0;33m
 BLUE   = 	\033[34m
 PURPLE = 	\033[35m
-DEF    = 	\033[0m
+RESET  = 	\033[0m
 
 all : $(NAME)
 
@@ -24,7 +24,7 @@ $(NAME): $(OBJ)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -n "$(GREEN)⬤ $(BLUE)⬤ $(ORANGE)⬤ $(DEF)"
+	@echo -n "$(GREEN)⬤ $(BLUE)⬤ $(ORANGE)⬤ $(RESET)"
 
 clean:
 		@rm -f $(OBJ)

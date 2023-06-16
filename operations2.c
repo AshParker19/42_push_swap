@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 13:56:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/13 17:23:30 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:24:53 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,14 @@ void	rra_rrb(t_stack *head, int flag)
 		}
 		current->value = last_orig;
 		if (flag)
-		{
-			if (flag == STACK_A)
-				ft_putstr("rra\n");
-			else
-				ft_putstr("rrb\n");
-		}
+			ft_putstr(ft_ternary(flag == STACK_A,
+					"rra\n", "rrb\n"));
 	}
 }
 
 void	rrr(t_stack *s_a, t_stack *s_b)
 {
-	rra_rrb(s_a, 0);
-	rra_rrb(s_b, 0);
+	rra_rrb(s_a, NEUTRAL);
+	rra_rrb(s_b, NEUTRAL);
 	ft_putstr("rrr\n");
 }
