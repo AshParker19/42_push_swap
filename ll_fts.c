@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/16 17:46:57 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:13:26 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,54 @@
 
 void	ft_create_stack(int ac, char *av[])
 {
-	t_store		store;
+	t_store		*store;
 	int			i;
 	
 	i = 0;
-	store.stack_a = NULL;
-	store.stack_b = NULL;
+	store = ft_calloc(1, sizeof(t_store));
+	store->stack_a = NULL;
+	store->stack_b = NULL;
+	store->count = ac - 1;
+	store->min_even = INT_MAX; 
+	store->min_odd = INT_MAX; 
+	store->max_even = INT_MIN;
 	while (++i < ac)
-		store.stack_a = ft_addback(store.stack_a, ft_atoi(av[i]));
-	if (ft_check_if_sorted(store.stack_a))
+		store->stack_a = ft_addback(store->stack_a, ft_atoi(av[i]));
+	if (ft_check_if_sorted(store->stack_a))
 	{
-		store.stack_a = ft_free_stack(store.stack_a);
+		store->stack_a = ft_free_stack(store->stack_a);
 		exit (SORTED_ALREADY);
 	}
-	store.count = ac - 1;
-	
-	// ft_print_list(stack_a, stack_b);
 	// ft_sort(store);
+	ft_min_max_search(store, store->stack_a, 0);
+	// printf("THE POSITION : %d\n", ft_find_position(store->stack_a, store->min_even));
 	
-	ft_print_list(store.stack_a, store.stack_b);
-	store.stack_a = ft_free_stack(store.stack_a);
-	store.stack_b = ft_free_stack(store.stack_b);
+	ft_print_list(store);
+	store->stack_a = ft_free_stack(store->stack_a);
+	// store->stack_b = ft_free_stack(store->stack_b); !!! I don't need to free stack_b because at the end it's going to be empty
+	free (store);
 }
 
-void	ft_print_list(t_stack *stack_a, t_stack *stack_b)
+void	ft_print_list(t_store *store)
 {
-	t_stack *current_a = stack_a;
-	t_stack *current_b = stack_b;
+	t_stack *current_a = store->stack_a;
+	t_stack *current_b = store->stack_b;
 	
+	// print min and max values
+	printf(SBLUE"╒≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡╕\n"RESET);
+	printf(GREEN"     MIN EVEN : %d | MAX EVEN : %d\n"RESET, store->min_even, store->max_even);
+	printf(GREEN"             MIN ODD : %d\n"RESET, store->min_odd);
+	printf(SBLUE"╘≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡╛\n"RESET);
 	// print stack A
 	printf(YELLOW"╔═══════════════╗\n"RESET);
 	printf(PURPLE"        A        \n"RESET);
 	if (!current_a)
 		printf (RED"     EMPTY!!\n" RESET);
 	else if (!current_a->next && !current_a->prev)
-		printf (RED"    ONLY HEAD\n"RESET);	
+		printf (RED"    ONLY HEAD\n"RESET);
 	while (current_a)
 	{
+		printf (SALMON" INDEX %d\n", current_a->index);
 		printf (GREEN" CURRENT_A NUM %d\n"RESET, current_a->value);
 		if (!current_a->prev)
 			printf (CYAN" PREV - NULL\n"RESET);
