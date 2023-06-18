@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:48:20 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/17 22:47:46 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:42:15 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,15 @@ void	ft_min_max_search(t_store *store, t_stack *stack_a, int i)
 		if (stack_a->value < store->min_even)
 			store->min_even = stack_a->value;
 		if (stack_a->value > store->max_even)
-			store->max_even = stack_a->value;	
+			store->max_even = stack_a->value;
 	}
 	else
-		if (stack_a->value < store->min_even)
+	{
+		if (stack_a->value < store->min_odd)
 			store->min_odd = stack_a->value;
+		if (stack_a->value > store->max_odd)
+			store->max_odd = stack_a->value;	
+	}
 	stack_a->index = i;
 	ft_min_max_search(store, stack_a->next, i + 1);		
 }
@@ -67,13 +71,3 @@ void	ft_min_max_search(t_store *store, t_stack *stack_a, int i)
 // 		current = current->next;
 // 	}
 // }
-
-int	ft_find_position(t_stack *stack_a, int to_find)
-{
-	if (!stack_a)
-		return (-1);
-	if (stack_a->value == to_find)
-		return (stack_a->index);
-	else
-		return (ft_find_position(stack_a->next, to_find));
-}

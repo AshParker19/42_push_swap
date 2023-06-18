@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/17 23:11:01 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:38:52 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ typedef struct s_store
 	int		min_even;
 	int		max_even;
 	int		min_odd;
+	int		max_odd;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	t_stack	*stack_a_tail;
-	t_stack	*stack_b_tail;
 }				t_store;
 
 // llists
@@ -71,7 +70,7 @@ t_stack		*ft_free_stack(t_stack *s_a);
 // operations
 void		sa_sb(t_stack *head, int flag);
 void		ss(t_stack *s_a, t_stack *s_b);
-void		pa_pb(t_stack **push_from, t_stack **push_to, int flag);
+void		pa_pb(t_store *store, t_stack **push_from, t_stack **push_to, int flag);
 void		ra_rb(t_stack *head, int flag);
 void		rr(t_stack *s_a, t_stack *s_b);
 void		rra_rrb(t_stack *head, int flag);
@@ -79,8 +78,7 @@ void		rrr(t_stack *s_a, t_stack *s_b);
 
 // sort 
 void		ft_sort(t_store *store);
-// void		ft_min_max_search(t_store *store);
-void	ft_min_max_search(t_store *store, t_stack *stack_a, int i);
+void		ft_min_max_search(t_store *store, t_stack *stack_a, int i);
 int	ft_find_position(t_stack *stack_a, int to_find);
 
 // utils
@@ -90,6 +88,9 @@ int			ft_checker2(int ac, char *av[]);
 int			ft_numeric(char *str);
 void		ft_putstr(char *str);
 int			ft_check_if_sorted(t_stack *head);
+void		ft_reset_limits(t_store *store);
+int			ft_find_the_cost(int index, int count);
+int			ft_get_direction(t_store *store, int min_value, int max_value);
 
 // ternary
 char		*ft_ternary(int condition, char *expression1, char *expression2);
@@ -101,3 +102,4 @@ void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_bzero(void *s, size_t n);
 
 #endif
+
