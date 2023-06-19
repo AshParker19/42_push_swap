@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/18 23:38:52 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:50:42 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 // numbers
 # define EVEN			 0
 # define ODD			 1
+
+// directions
+# define UP				 1
+# define DOWN			 2
 
 // colors for testing
 # define GREEN 			"\033[0;32m"
@@ -57,6 +61,8 @@ typedef struct s_store
 	int		max_even;
 	int		min_odd;
 	int		max_odd;
+	int		even_count;
+	int		odd_count;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 }				t_store;
@@ -78,8 +84,15 @@ void		rrr(t_stack *s_a, t_stack *s_b);
 
 // sort 
 void		ft_sort(t_store *store);
+void		ft_algorithm(t_store *store);
 void		ft_min_max_search(t_store *store, t_stack *stack_a, int i);
-int	ft_find_position(t_stack *stack_a, int to_find);
+int			ft_find_position(t_stack *stack_a, int to_find);
+// int			ft_find_the_cost(int index, int count);
+int	ft_find_the_cost(int index, int count, int *dir);
+int	ft_get_direction(t_store *store, int value, int *dir);
+// int			ft_get_direction(t_store *store, int min_value, int max_value);
+void	ft_rotate_stack_a(t_store *store, int cost, int dir_flag, int stack_flag);
+
 
 // utils
 int			ft_valid(int ac, char *av[]);
@@ -89,8 +102,6 @@ int			ft_numeric(char *str);
 void		ft_putstr(char *str);
 int			ft_check_if_sorted(t_stack *head);
 void		ft_reset_limits(t_store *store);
-int			ft_find_the_cost(int index, int count);
-int			ft_get_direction(t_store *store, int min_value, int max_value);
 
 // ternary
 char		*ft_ternary(int condition, char *expression1, char *expression2);

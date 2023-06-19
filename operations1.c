@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:12:37 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/18 21:15:19 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:30:02 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	pa_pb(t_store *store, t_stack **push_from, t_stack **push_to, int flag)
 					"pb\n", "pa\n"));
 		if (flag == STACK_A)
 			store->count -= 1;
-		ft_reset_limits(store);			
 	}
 }
 
