@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/19 16:50:42 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:01:54 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef struct s_store
 	int		odd_count;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	t_stack	*tail_a;
+	t_stack	*tail_b;
 }				t_store;
 
 // llists
@@ -77,10 +79,14 @@ t_stack		*ft_free_stack(t_stack *s_a);
 void		sa_sb(t_stack *head, int flag);
 void		ss(t_stack *s_a, t_stack *s_b);
 void		pa_pb(t_store *store, t_stack **push_from, t_stack **push_to, int flag);
-void		ra_rb(t_stack *head, int flag);
-void		rr(t_stack *s_a, t_stack *s_b);
-void		rra_rrb(t_stack *head, int flag);
-void		rrr(t_stack *s_a, t_stack *s_b);
+// void		ra_rb(t_stack *head, int flag);
+void	ra_rb(t_store *store, t_stack *head, int flag);
+// void		rr(t_stack *s_a, t_stack *s_b);
+void	rr(t_store *store, t_stack *s_a, t_stack *s_b);
+// void		rra_rrb(t_stack *head, int flag);
+void	rra_rrb(t_store *store, t_stack *head, int flag);
+// void		rrr(t_stack *s_a, t_stack *s_b);
+void	rrr(t_store *store, t_stack *s_a, t_stack *s_b);
 
 // sort 
 void		ft_sort(t_store *store);

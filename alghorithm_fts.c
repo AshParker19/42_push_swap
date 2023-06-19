@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:01:04 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/19 16:55:01 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/19 20:15:49 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,23 @@ void	ft_algorithm(t_store *store)
 		ft_reset_limits(store);
 		ft_min_max_search(store, store->stack_a, 0);
 	}
-	ft_print_list(store);
+	// if (store->tail_b)
+	// 	printf("TAIL_B VALUE: %d\n", store->tail_b->value);
+	while (store->stack_b)
+	{
+		if (store->stack_b->value > store->tail_b->value)
+			pa_pb(store, &store->stack_b, &store->stack_a, STACK_B);
+		else
+		{
+			rra_rrb(store, store->stack_b, STACK_B);
+			pa_pb(store, &store->stack_b, &store->stack_a, STACK_B);
+		}	
+	}
+	// ft_print_list(store);
+	// if (ft_check_if_sorted(store->stack_a))
+	// 	printf (GREEN"========== OK! ==========\n"RESET);
+	// else
+	// 	printf(RED"========== NO ==========\n"RESET);	
 }
 
 void	ft_rotate_stack_a(t_store *store, int cost, int dir_flag, int stack_flag)
@@ -46,11 +62,11 @@ void	ft_rotate_stack_a(t_store *store, int cost, int dir_flag, int stack_flag)
 	while (--cost)
 	{
 		if (dir_flag == UP)
-			ra_rb(store->stack_a, STACK_A);
+			ra_rb(store, store->stack_a, STACK_A);
 		else
-			rra_rrb(store->stack_a, STACK_A);
+			rra_rrb(store, store->stack_a, STACK_A);
 	}
 	pa_pb(store, &store->stack_a, &store->stack_b, STACK_A);
 	if (stack_flag == STACK_B)
-		ra_rb(store->stack_b , STACK_B);
+		ra_rb(store, store->stack_b , STACK_B);
 }

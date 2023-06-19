@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:12:37 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/19 16:30:02 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/06/19 18:55:05 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	pa_pb(t_store *store, t_stack **push_from, t_stack **push_to, int flag)
 	}
 }
 
-void	ra_rb(t_stack *head, int flag)
+void	ra_rb(t_store *store, t_stack *head, int flag)
 {
 	t_stack	*current;
 	int		first_orig;
@@ -75,15 +75,38 @@ void	ra_rb(t_stack *head, int flag)
 			current = current->next;
 		}
 		current->value = first_orig;
+		if (flag == STACK_B)
+			store->tail_b = current;
 		if (flag)
 			ft_putstr(ft_ternary(flag == STACK_A,
 					"ra\n", "rb\n"));
 	}
 }
 
-void	rr(t_stack *s_a, t_stack *s_b)
+// void	ra_rb(t_stack *head, int flag)
+// {
+// 	t_stack	*current;
+// 	int		first_orig;
+
+// 	current = head;
+// 	if (head)
+// 	{
+// 		first_orig = head->value;
+// 		while (current->next)
+// 		{
+// 			current->value = current->next->value;
+// 			current = current->next;
+// 		}
+// 		current->value = first_orig;
+// 		if (flag)
+// 			ft_putstr(ft_ternary(flag == STACK_A,
+// 					"ra\n", "rb\n"));
+// 	}
+// }
+
+void	rr(t_store *store, t_stack *s_a, t_stack *s_b)
 {
-	ra_rb(s_a, NEUTRAL);
-	ra_rb(s_b, NEUTRAL);
+	ra_rb(store, s_a, NEUTRAL);
+	ra_rb(store, s_b, NEUTRAL);
 	ft_putstr("rr\n");
 }
