@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/19 19:14:40 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:10:40 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,27 @@ void	ft_create_stack(int ac, char *av[])
 {
 	t_store		store;
 	int			i;
+	int			copy[ac - 1];
 	
-	i = 0;
 	store.stack_a = NULL;
 	store.stack_b = NULL;
+	store.tail_a = NULL;
 	store.tail_b = NULL;
-	store.count = ac - 1;
-	ft_reset_limits(&store);
+	store.count_a = ac - 1;
+	store.count_b = 0;
+	store.chunk_size = store.count_a / 10;
+	store.percent10 = (store.count_a * 10) / 100;
+	store.biggest = INT_MIN;
+	i = 0;
 	while (++i < ac)
-		store.stack_a = ft_addback(store.stack_a, ft_atoi(av[i]));
+		store.stack_a = ft_addback(&store, ft_atoi(av[i]));
 	if (ft_check_if_sorted(store.stack_a))
 	{
-		store.stack_a = ft_free_stack(store.stack_a);
+		store.stack_a = ft_free_stack_a(store.stack_a);
 		exit (SORTED_ALREADY);
 	}
-	ft_sort(&store);
-	store.stack_a = ft_free_stack(store.stack_a);
+	ft_sort(&store, copy);
+	store.stack_a = ft_free_stack_a(store.stack_a);
 }
 
 void	ft_print_list(t_store *store)
@@ -39,12 +44,6 @@ void	ft_print_list(t_store *store)
 	t_stack *current_a = store->stack_a;
 	t_stack *current_b = store->stack_b;
 	
-	// print min and max values
-	// printf(SBLUE"╒≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡╕\n"RESET);
-	// printf(GREEN"     MIN EVEN  %d | MAX EVEN %d\n"RESET, store->min_even, store->max_even);
-	// printf(GREEN"     MIN ODD   %d | MAX ODD : %d\n"RESET, store->min_odd, store->max_odd);
-	// printf(SBLUE"╘≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡╛\n"RESET);
-	// print stack A
 	printf(YELLOW"╔═══════════════╗\n"RESET);
 	printf(PURPLE"        A        \n"RESET);
 	if (!current_a)
@@ -63,10 +62,32 @@ void	ft_print_list(t_store *store)
 			printf(CYAN" NEXT - NULL\n"RESET);
 		else
 			printf (CYAN" NEXT VALUE - %d\n"RESET, current_a->next->value);
+		if (current_a->flag == 1)	
+			printf (SBLUE" 0-10%%\n");
+		else if (current_a->flag == 2)	
+			printf (SBLUE" 10-20%%\n");
+		else if (current_a->flag == 3)	
+			printf (SBLUE" 20-30%%\n");
+		else if (current_a->flag == 4)	
+			printf (SBLUE" 30-40%%\n");
+		else if (current_a->flag == 5)	
+			printf (SBLUE" 40-50%%\n");
+		else if (current_a->flag == 6)	
+			printf (SBLUE" 50-60%%\n");
+		else if (current_a->flag == 7)	
+			printf (SBLUE" 60-70%%\n");
+		else if (current_a->flag == 8)	
+			printf (SBLUE" 70-80%%\n");
+		else if (current_a->flag == 9)	
+			printf (SBLUE" 80-90%%\n");
+		else if (current_a->flag == 10)	
+			printf (SBLUE" 90-100%%\n");										
 		if (current_a->next)
 			printf (YELLOW"=================\n"RESET);	
 		current_a = current_a->next;
 	}
+	if (store->tail_a)
+		printf (SALMON" TAIL A VALUE %d\n", store->tail_a->value);
 	printf (YELLOW"╚═══════════════╝\n"RESET);
 	
 	// print stack B
@@ -78,6 +99,7 @@ void	ft_print_list(t_store *store)
 		printf (RED"    ONLY HEAD\n"RESET);	
 	while (current_b)
 	{
+		printf (SALMON" INDEX %d\n", current_b->index);
 		printf(GREEN" CURRENT_B NUM %d\n"RESET, current_b->value);
 		if (!current_b->prev)
 			printf (CYAN" PREV - NULL\n"RESET);
@@ -91,35 +113,37 @@ void	ft_print_list(t_store *store)
 			printf (YELLOW"=================\n"RESET);	
 		current_b = current_b->next;
 	}
+	if (store->tail_b)
+		printf (SALMON" TAIL B VALUE %d\n", store->tail_b->value);
 	printf (YELLOW"╚═══════════════╝\n"RESET);
 }
 
-t_stack	*ft_addback(t_stack *head, int new_value)
-{
-	t_stack	*new;
-	t_stack	*current;
-
+t_stack	*ft_addback(t_store *store, int new_value)
+{	
+	t_stack *new;
+	
 	new = ft_calloc(1, sizeof(t_stack));
 	new->value = new_value;
-	current = head;
-	if (!head)
+	if (!store->stack_a)
+	{
+		store->tail_a = new;
 		return (new);
+	}
 	else
 	{
-		while (current->next)
-			current = current->next;
-		current->next = new;
-		new->prev = current;
-		return (head);
+		store->tail_a->next = new;
+		new->prev = store->tail_a;
+		store->tail_a = new;
+		return (store->stack_a);
 	}	
 }
 
-t_stack	*ft_free_stack(t_stack *stack)
+t_stack	*ft_free_stack_a(t_stack *stack_a)
 {
-	if (stack)
+	if (stack_a)
 	{
-		ft_free_stack(stack->next);
-		free (stack);
+		ft_free_stack_a(stack_a->next);
+		free (stack_a);
 	}
 	return (NULL);
 }

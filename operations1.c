@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:12:37 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/19 18:55:05 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/01 23:20:59 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,86 +27,83 @@ void	sa_sb(t_stack *head, int flag)
 	}
 }
 
-void	ss(t_stack *s_a, t_stack *s_b)
+void	ss(t_store *store)
 {
-	sa_sb(s_a, NEUTRAL);
-	sa_sb(s_b, NEUTRAL);
+	sa_sb(store->stack_a, NEUTRAL);
+	sa_sb(store->stack_b, NEUTRAL);
 	ft_putstr("ss\n");
 }
 
-void	pa_pb(t_store *store, t_stack **push_from, t_stack **push_to, int flag)
+void	pb(t_store *store)
 {
 	t_stack	*temp;
 
-	if (*push_from)
+	if (store->stack_a)
 	{
-		temp = *push_from;
-		if (!(*push_from)->next)
-			*push_from = NULL;
+		temp = store->stack_a;
+		if (!store->stack_a->next)
+			store->stack_a = NULL;
 		else
 		{
-			*push_from = (*push_from)->next;
-			(*push_from)->prev = NULL;
+			store->stack_a = store->stack_a->next;
+			store->stack_a->prev = NULL;
 		}
-		temp->next = *push_to;
-		if (*push_to)
-			(*push_to)->prev = temp;
-		*push_to = temp;
-		if (flag)
-			ft_putstr(ft_ternary(flag == STACK_A,
-					"pb\n", "pa\n"));
-		if (flag == STACK_A)
-			store->count -= 1;
+		temp->next = store->stack_b;
+		if (store->stack_b)
+			store->stack_b->prev = temp;
+		store->stack_b = temp;
+		store->count_a -= 1;
+		store->count_b += 1;
+		if (store->count_b == 1)
+			store->tail_b = store->stack_b;
+		else if (store->count_a == 0)
+			store->tail_a = NULL;
+		ft_putstr("pb\n");
 	}
 }
 
-void	ra_rb(t_store *store, t_stack *head, int flag)
+void	pa(t_store *store)
 {
-	t_stack	*current;
-	int		first_orig;
+	t_stack	*temp;
 
-	current = head;
-	if (head)
+	if (store->stack_b)
 	{
-		first_orig = head->value;
-		while (current->next)
+		temp = store->stack_b;
+		if (!store->stack_b->next)
+			store->stack_b = NULL;
+		else
 		{
-			current->value = current->next->value;
-			current = current->next;
+			store->stack_b = store->stack_b->next;
+			store->stack_b->prev = NULL;
 		}
-		current->value = first_orig;
-		if (flag == STACK_B)
-			store->tail_b = current;
-		if (flag)
-			ft_putstr(ft_ternary(flag == STACK_A,
-					"ra\n", "rb\n"));
+		temp->next = store->stack_a;
+		if (store->stack_a)
+			store->stack_a->prev = temp;
+		store->stack_a = temp;
+		store->count_a += 1;
+		store->count_b -= 1;
+		if (store->count_a == 1)
+			store->tail_a = store->stack_a;
+		else if (store->count_b == 0)
+			store->tail_b = NULL;
+		ft_putstr("pa\n");
 	}
 }
 
-// void	ra_rb(t_stack *head, int flag)
-// {
-// 	t_stack	*current;
-// 	int		first_orig;
-
-// 	current = head;
-// 	if (head)
-// 	{
-// 		first_orig = head->value;
-// 		while (current->next)
-// 		{
-// 			current->value = current->next->value;
-// 			current = current->next;
-// 		}
-// 		current->value = first_orig;
-// 		if (flag)
-// 			ft_putstr(ft_ternary(flag == STACK_A,
-// 					"ra\n", "rb\n"));
-// 	}
-// }
-
-void	rr(t_store *store, t_stack *s_a, t_stack *s_b)
+void	ra(t_store *store, int flag)
 {
-	ra_rb(store, s_a, NEUTRAL);
-	ra_rb(store, s_b, NEUTRAL);
-	ft_putstr("rr\n");
+	t_stack	*temp;
+
+	if (store->stack_a && store->stack_a->next)
+	{
+		temp = store->stack_a;
+		store->stack_a = store->stack_a->next;
+		store->stack_a->prev = NULL;
+		store->tail_a->next = temp;
+		temp->prev = store->tail_a;
+		temp->next = NULL;
+		store->tail_a = temp;
+		if (flag == STACK_A)
+			ft_putstr("ra\n");
+	}
 }

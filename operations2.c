@@ -6,63 +6,76 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 13:56:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/19 19:12:20 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/01 23:21:13 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra_rrb(t_store *store, t_stack *head, int flag)
+void	rb(t_store *store, int flag)
 {
-	t_stack	*current;
-	int		last_orig;
+	t_stack	*temp;
 
-	current = head;
-	if (head)
+	if (store->stack_b && store->stack_b->next)
 	{
-		while (current->next)
-			current = current->next;
+		temp = store->stack_b;
+		store->stack_b = store->stack_b->next;
+		store->stack_b->prev = NULL;
+		store->tail_b->next = temp;
+		temp->prev = store->tail_b;
+		temp->next = NULL;
+		store->tail_b = temp;
 		if (flag == STACK_B)
-			store->tail_b = current;
-		last_orig = current->value;
-		while (current->prev)
-		{
-			current->value = current->prev->value;
-			current = current->prev;
-		}
-		current->value = last_orig;
-		if (flag)
-			ft_putstr(ft_ternary(flag == STACK_A,
-					"rra\n", "rrb\n"));
+			ft_putstr("rb\n");
 	}
 }
 
-// void	rra_rrb(t_stack *head, int flag)
-// {
-// 	t_stack	*current;
-// 	int		last_orig;
-
-// 	current = head;
-// 	if (head)
-// 	{
-// 		while (current->next)
-// 			current = current->next;
-// 		last_orig = current->value;
-// 		while (current->prev)
-// 		{
-// 			current->value = current->prev->value;
-// 			current = current->prev;
-// 		}
-// 		current->value = last_orig;
-// 		if (flag)
-// 			ft_putstr(ft_ternary(flag == STACK_A,
-// 					"rra\n", "rrb\n"));
-// 	}
-// }
-
-void	rrr(t_store *store, t_stack *s_a, t_stack *s_b)
+void	rr(t_store *store)
 {
-	rra_rrb(store, s_a, NEUTRAL);
-	rra_rrb(store, s_b, NEUTRAL);
+	ra(store, NEUTRAL);
+	rb(store, NEUTRAL);
+	ft_putstr("rr\n");
+}
+
+void	rra(t_store *store, int flag)
+{
+	t_stack	*temp;
+
+	if (store->stack_a && store->stack_a->next)
+	{
+		temp = store->tail_a;
+		store->tail_a = store->tail_a->prev;
+		store->tail_a->next = NULL;
+		store->stack_a->prev = temp;
+		temp->prev = NULL;
+		temp->next = store->stack_a;
+		store->stack_a = temp;
+		if (flag == STACK_A)
+			ft_putstr("rra\n");
+	}
+}
+
+void	rrb(t_store *store, int flag)
+{
+	t_stack	*temp;
+
+	if (store->stack_b && store->stack_b->next)
+	{
+		temp = store->tail_b;
+		store->tail_b = store->tail_b->prev;
+		store->tail_b->next = NULL;
+		store->stack_b->prev = temp;
+		temp->prev = NULL;
+		temp->next = store->stack_b;
+		store->stack_b = temp;
+		if (flag == STACK_B)
+			ft_putstr("rrb\n");
+	}
+}
+
+void	rrr(t_store *store)
+{
+	rra(store, NEUTRAL);
+	rrb(store, NEUTRAL);
 	ft_putstr("rrr\n");
 }
