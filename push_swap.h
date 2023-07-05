@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/02 23:08:14 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:24:01 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,25 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+/**********FLAGS**********/
 // errors
 # define SORTED_ALREADY  0
 # define NOT_NUMERIC 	 1
 # define INVALID_INT 	 2
 
 // stacks flags
-# define NEUTRAL		 0
-# define STACK_A 		 1
-# define STACK_B 		 2
+# define NEUTRAL		 3
+# define STACK_A 		 4
+# define STACK_B 		 5
 
 // directions
-# define UP				 11
-# define DOWN			 12
+# define UP				 6
+# define DOWN			 7
 
 // range
-# define BIGGEST		 13
-# define SND_BIGGEST	 14
+# define BIGGEST		 8
+# define SND_BIGGEST	 9
+/*************************/
 
 // colors for testing
 # define GREEN 			"\033[0;32m"
@@ -91,13 +93,18 @@ void		rrr(t_store *store);
 void		ft_sort(t_store *store, int copy[]);
 void		ft_algorithm(t_store *store, int copy[]);
 void		ft_index(t_stack *stack_a, int i);
+void		ft_marker(t_store *store, t_stack *stack_a, int copy[], int chunk_index);
 int			ft_find_position(t_stack *stack_a, int to_find);
-// int			ft_find_the_cost(int index, int count);
-int	ft_find_the_cost(int index, int count, int *dir);
-int	ft_get_direction(t_store *store, int value, int *dir);
-// int			ft_get_direction(t_store *store, int min_value, int max_value, int *dir);
-void	ft_rotate_stack(t_store *store, int cost, int dir_flag);
-int		ft_find_pos_array(int copy[], int size, int to_find, int i);
+int			ft_find_the_cost(int index, int count, int *dir);
+int			ft_find_the_cost2(t_store *store, int *dir, int *to_push);
+int			ft_from_start(t_stack *stack_a, int find_flag);
+int			ft_from_end(t_stack *tail_a, int find_flag);
+int			ft_get_dir_a(t_store *store, int flag1, int flag2, int *dir);
+int			ft_get_dir_b(t_store *store, int value, int *dir);
+void		ft_rotate_stack(t_store *store, int cost, int dir, int stack_flag);
+int			ft_count_flags(t_stack *stack_a, int find_flag);
+int			ft_closer(t_store *store, int flag, int *dir);
+void		ft_1st_2nd(t_store *store, t_stack *stack_b, int i);
 
 
 // parsing
@@ -105,12 +112,13 @@ int			ft_valid(int ac, char *av[]);
 int			ft_checker(int ac, char *av[]);
 int			ft_checker2(int ac, char *av[]);
 int			ft_numeric(char *str);
-int			ft_check_if_sorted(t_stack *head);
+int			ft_check_if_sorted(int ac, char *av[]);
 
 // utils
 char		*ft_ternary(int condition, char *expression1, char *expression2);
 void		ft_copy_values(t_stack *stack_a, int copy[], int i);
 void		ft_sort_copy(int copy[], int size);
+int			ft_find_pos_array(int copy[], int size, int to_find, int i);
 
 // libft
 long int	ft_atoi(const char *nptr);

@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/02 23:10:40 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/04 12:01:14 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,9 @@ void	ft_create_stack(int ac, char *av[])
 	store.count_b = 0;
 	store.chunk_size = store.count_a / 10;
 	store.percent10 = (store.count_a * 10) / 100;
-	store.biggest = INT_MIN;
 	i = 0;
 	while (++i < ac)
 		store.stack_a = ft_addback(&store, ft_atoi(av[i]));
-	if (ft_check_if_sorted(store.stack_a))
-	{
-		store.stack_a = ft_free_stack_a(store.stack_a);
-		exit (SORTED_ALREADY);
-	}
 	ft_sort(&store, copy);
 	store.stack_a = ft_free_stack_a(store.stack_a);
 }

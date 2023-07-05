@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:47:11 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/02 23:57:54 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/03 21:22:35 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	ft_copy_values(t_stack *stack_a, int copy[], int i)
 
 void	ft_sort_copy(int copy[], int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	int	swap;
 
 	i = -1;
@@ -60,7 +60,7 @@ void	ft_index(t_stack *stack_a, int i)
 	if (!stack_a)
 		return ;
 	stack_a->index = i;
-	ft_index(stack_a->next, i + 1);	
+	ft_index(stack_a->next, i + 1);
 }
 
 char	*ft_ternary(int condition, char *expression1, char *expression2)

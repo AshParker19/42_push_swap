@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_fts1.c                                       :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:16:19 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/16 17:33:39 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/05 14:31:46 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,29 @@ int	ft_numeric(char *str)
 	return (1);
 }
 
+int	ft_checker(int ac, char *av[])
+{
+	int	i;
+
+	i = 0;
+	while (av[++i])
+	{
+		if (!ft_numeric(av[i]) || !*av[i])
+		{
+			ft_putstr("Error\n");
+			exit(NOT_NUMERIC);
+		}
+	}	
+	if (!(ft_checker2(ac, av)))
+	{
+		ft_putstr("Error\n");
+		exit(INVALID_INT);
+	}
+	if (ft_check_if_sorted(ac, av))
+		exit (SORTED_ALREADY);
+	return (1);
+}
+
 int	ft_checker2(int ac, char *av[])
 {
 	int	i;
@@ -56,39 +79,15 @@ int	ft_checker2(int ac, char *av[])
 	return (1);
 }
 
-int	ft_checker(int ac, char *av[])
+int	ft_check_if_sorted(int ac, char *av[])
 {
 	int	i;
-
+	
 	i = 0;
-	while (av[++i])
-	{
-		if (!ft_numeric(av[i]) || !*av[i])
-		{
-			ft_putstr("Error\n");
-			exit(NOT_NUMERIC);
-		}
-	}	
-	if (!(ft_checker2(ac, av)))
-	{
-		{
-			ft_putstr("Error\n");
-			exit(INVALID_INT);
-		}
-	}
-	return (1);
-}
-
-int	ft_check_if_sorted(t_stack *head)
-{
-	t_stack	*current;
-
-	current = head;
-	while (current->next)
-	{
-		if (current->value > current->next->value)
+	while (++i < ac - 1)
+		if (ft_atoi(av[i]) > ft_atoi(av[i + 1]))
 			return (0);
-		current = current->next;
-	}
 	return (1);
 }
+
+// it doesnt sort 9 numbers
