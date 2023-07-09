@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:47:11 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/03 21:22:35 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/08 22:04:31 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ void	ft_index(t_stack *stack_a, int i)
 	ft_index(stack_a->next, i + 1);
 }
 
-char	*ft_ternary(int condition, char *expression1, char *expression2)
+void	ft_find_the_smallest(t_store *store, t_stack *stack_a, int i)
 {
-	if (condition)
-		return (expression1);
-	else
-		return (expression2);
+	if (!stack_a)
+		return ;
+	if (stack_a->value < store->smallest)
+		store->smallest = stack_a->value;
+	stack_a->index = i;	
+	ft_find_the_smallest(store, stack_a->next, i + 1);	
 }

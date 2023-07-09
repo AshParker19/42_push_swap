@@ -6,24 +6,25 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:12:37 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/01 23:20:59 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/08 22:05:02 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa_sb(t_stack *head, int flag)
+void	sa_sb(t_stack *stack, int flag)
 {
 	int	temp;
 
-	if (head && head->next)
+	if (stack && stack->next)
 	{
-		temp = head->value;
-		head->value = head->next->value;
-		head->next->value = temp;
-		if (flag)
-			ft_putstr(ft_ternary(flag == STACK_A,
-					"sa\n", "sb\n"));
+		temp = stack->value;
+		stack->value = stack->next->value;
+		stack->next->value = temp;
+		if (flag == STACK_A)
+			ft_putstr("sa\n");
+		else if (flag == STACK_B)	
+			ft_putstr("sb\n");
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:19:55 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/05 13:12:51 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/08 21:37:12 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ void	ft_1st_2nd(t_store *store, t_stack *stack_b, int i)
 	ft_1st_2nd(store, stack_b->next, i + 1);
 }
 
-int	ft_find_position(t_stack *stack_b, int to_find)
+int	ft_find_position(t_stack *stack, int to_find)
 {
-	if (!stack_b)
+	if (!stack)
 		return (0);
-	if (stack_b->value == to_find)
-		return (stack_b->index);
+	if (stack->value == to_find)
+		return (stack->index);
 	else
-		return (ft_find_position(stack_b->next, to_find));
+		return (ft_find_position(stack->next, to_find));
 }

@@ -20,11 +20,12 @@ all : $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $^ -o $@
+	@echo "$(GREEN)\nDONE!$(RESET)"
 	@rm -rf $(OBJ) # !!! remove this shit !!!
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -n "$(GREEN)⬤ $(BLUE)⬤ $(ORANGE)⬤ $(RESET)"
+	@echo -n "$(GREEN)⬤ $(BLUE)⬤ $(RESET)"
 
 clean:
 		@rm -f $(OBJ)
@@ -36,3 +37,5 @@ fclean : clean
 		@rm -f $(NAME)
 
 re : fclean all
+
+# make a message with instructions here

@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/04 12:01:14 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/08 23:33:31 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_create_stack(int ac, char *av[])
 	i = 0;
 	while (++i < ac)
 		store.stack_a = ft_addback(&store, ft_atoi(av[i]));
-	ft_sort(&store, copy);
+	ft_sort_main(&store, copy);
 	store.stack_a = ft_free_stack_a(store.stack_a);
 }
 
