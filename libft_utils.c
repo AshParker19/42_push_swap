@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:16:09 by anshovah          #+#    #+#             */
-/*   Updated: 2023/06/16 17:29:33 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/09 21:36:23 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ void	ft_bzero(void *s, size_t n)
 	copy = s;
 	while (n--)
 		*copy++ = '\0';
-}
-
-void	ft_putstr(char *str)
-{
-	while (*str)
-		write(1, str++, 1);
 }
 
 long int	ft_atoi(const char *nptr)
@@ -65,26 +59,44 @@ long int	ft_atoi(const char *nptr)
 	return (res * sign);
 }
 
-char	**ft_recursive_split(char *str, char *arr[], int count, char c)
+char	*ft_strchr(const char *s, int c)
+{	
+	int				i;
+	unsigned char	c1;
+
+	i = 0;
+	c1 = c;
+	while (s[i])
+	{
+		if (s[i] == c1)
+			return ((char *)s + i);
+		i++;
+	}
+	if (s[i] == c1)
+		return ((char *)s + i);
+	return (NULL);
+}
+
+char	**ft_recursive_split(char *str, char *arr[], int count, char *charset)
 {
 	char	*new_str;
 	int		i;
 
 	i = 0;
 	new_str = 0;
-	while (str && *str && *str == c)
+	while (str && *str && ft_strchr(charset, *str))
 		str++;
-	while (str && str[i] && str[i] != c)
+	while (str && str[i] && !ft_strchr(charset, *str))
 		i++;
 	if (i > 0)
 		new_str = (char *)malloc(i + 1);
 	if (new_str)
 		new_str[i] = 0;
 	i = 0;
-	while (new_str && str && *str && *str != c)
+	while (new_str && str && *str && !ft_strchr(charset, *str))
 		new_str[i++] = *str++;
 	if (new_str)
-		arr = ft_recursive_split(str, arr, count + 1, c);
+		arr = ft_recursive_split(str, arr, count + 1, charset);
 	else
 		arr = (char **)malloc(sizeof(char *) * (count + 1));
 	if (arr)

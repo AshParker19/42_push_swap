@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:48:20 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/08 23:33:38 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/10 20:43:40 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_sort_less10(t_store *store)
 	int	i;
 	int	j;
 	int	save;
-
+	
 	i = store->count_a - 5;
 	j = i;
 	save = store->count_a;
@@ -95,3 +95,6 @@ void	ft_sort_less10(t_store *store)
 	while (j--)
 		pa(store);
 }
+
+// we know that the biggest numbers will be pushed the last ones, so we can have a way to
+// sort them without to many manipuations and ten sort back he rest of stack B

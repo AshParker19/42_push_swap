@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/08 23:33:31 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/10 17:46:12 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,26 +56,27 @@ void	ft_print_list(t_store *store)
 			printf(CYAN" NEXT - NULL\n"RESET);
 		else
 			printf (CYAN" NEXT VALUE - %d\n"RESET, current_a->next->value);
-		if (current_a->flag == 1)	
-			printf (SBLUE" 0-10%%\n");
-		else if (current_a->flag == 2)	
-			printf (SBLUE" 10-20%%\n");
-		else if (current_a->flag == 3)	
-			printf (SBLUE" 20-30%%\n");
-		else if (current_a->flag == 4)	
-			printf (SBLUE" 30-40%%\n");
-		else if (current_a->flag == 5)	
-			printf (SBLUE" 40-50%%\n");
-		else if (current_a->flag == 6)	
-			printf (SBLUE" 50-60%%\n");
-		else if (current_a->flag == 7)	
-			printf (SBLUE" 60-70%%\n");
-		else if (current_a->flag == 8)	
-			printf (SBLUE" 70-80%%\n");
-		else if (current_a->flag == 9)	
-			printf (SBLUE" 80-90%%\n");
-		else if (current_a->flag == 10)	
-			printf (SBLUE" 90-100%%\n");										
+		// printf (RED "FLAG %d\n", current_a->fl)	
+		// if (current_a->flag == 1)	
+		// 	printf (SBLUE" 0-10%%\n");
+		// else if (current_a->flag == 2)	
+		// 	printf (SBLUE" 10-20%%\n");
+		// else if (current_a->flag == 3)	
+		// 	printf (SBLUE" 20-30%%\n");
+		// else if (current_a->flag == 4)	
+		// 	printf (SBLUE" 30-40%%\n");
+		// else if (current_a->flag == 5)	
+		// 	printf (SBLUE" 40-50%%\n");
+		// else if (current_a->flag == 6)	
+		// 	printf (SBLUE" 50-60%%\n");
+		// else if (current_a->flag == 7)	
+		// 	printf (SBLUE" 60-70%%\n");
+		// else if (current_a->flag == 8)	
+		// 	printf (SBLUE" 70-80%%\n");
+		// else if (current_a->flag == 9)	
+		// 	printf (SBLUE" 80-90%%\n");
+		// else if (current_a->flag == 10)	
+		// 	printf (SBLUE" 90-100%%\n");										
 		if (current_a->next)
 			printf (YELLOW"=================\n"RESET);	
 		current_a = current_a->next;

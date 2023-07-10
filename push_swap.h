@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/08 23:28:18 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/10 14:58:14 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void		ft_1st_2nd(t_store *store, t_stack *stack_b, int i);
 
 // parsing
 int			ft_valid(int ac, char *av[]);
+int			ft_valid2(char *in_quotes);
 int			ft_checker(int ac, char *av[]);
 int			ft_checker2(int ac, char *av[]);
 int			ft_numeric(char *str);
@@ -127,13 +128,14 @@ int			ft_check_if_sorted(int ac, char *av[]);
 void		ft_copy_values(t_stack *stack_a, int copy[], int i);
 void		ft_sort_copy(int copy[], int size);
 int			ft_find_pos_array(int copy[], int size, int to_find, int i);
+void		ft_putstr(char *str);
 
 // libft
 long int	ft_atoi(const char *nptr);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_bzero(void *s, size_t n);
-void		ft_putstr(char *str);
-char		**ft_recursive_split(char *str, char *arr[], int count, char c);
+char		*ft_strchr(const char *s, int c);
+char		**ft_recursive_split(char *str, char *arr[], int count, char *charset);
 
 #endif
 

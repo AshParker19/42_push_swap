@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:29 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/05 20:23:54 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/10 19:49:36 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,3 +95,27 @@ int	ft_count_flags(t_stack *stack_a, int find_flag)
 	else
 		return (ft_count_flags(stack_a->next, find_flag));
 }
+
+// void	ft_sort_back10(t_store *store)
+// {
+// 	int	smallest_index;
+// 	int	i;
+// 	int	j;
+// 	int	save;
+// 	i = 10;
+	
+// 	while (i)
+// 	{
+// 		store->smallest = INT_MAX;
+// 		ft_find_the_smallest(store, store->stack_a, 0);
+// 		smallest_index = ft_find_position(store->stack_a, store->smallest);
+// 		if (smallest_index <= i)
+// 			while (store->stack_a->value != store->smallest)
+// 				ra(store, STACK_A);
+// 		else
+// 			while (store->stack_a->value != store->smallest)
+// 				rra(store, STACK_A);
+// 		pb(store);
+// 		i--;
+// 	}
+// }

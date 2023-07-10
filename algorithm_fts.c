@@ -6,13 +6,13 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:45:29 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/08 23:29:41 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/10 20:50:09 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_manage_stack_a(t_store *store, int flag_down, int flag_up, int count)
+void	ft_manage_stack_a(t_store *store, int flag_down, int flag_up, int count, int flag)
 {
 	int		cost;
 	int		dir;
@@ -20,48 +20,70 @@ void	ft_manage_stack_a(t_store *store, int flag_down, int flag_up, int count)
 	int		flag_cnt2;
 	bool	rr_flag;
 	
-	while (count--)
+	if (flag == 88)
 	{
-		ft_index(store->stack_a, 0);
-		flag_cnt1 = ft_count_flags(store->stack_a, flag_down);
-		flag_cnt2 = ft_count_flags(store->stack_a, flag_up);
-		if (flag_cnt1 && flag_cnt2)
-			cost = ft_get_dir_a(store, flag_down, flag_up, &dir);
-		else if (flag_cnt1 && !flag_cnt2)
-			cost = ft_get_dir_a(store, flag_down, 0, &dir);
-		else if (!flag_cnt1 && flag_cnt2)
-			cost = ft_get_dir_a(store, 0, flag_up, &dir);
-		if (store->stack_b && dir == UP && rr_flag == true && cost > 1)
+		while (count--)
 		{
-			rr(store);
-			cost -= 1;
+			ft_index(store->stack_a, 0);
+			flag_cnt1 = ft_count_flags(store->stack_a, flag_down);
+			flag_cnt2 = ft_count_flags(store->stack_a, flag_up);
+			if (flag_cnt1 && flag_cnt2)
+				cost = ft_get_dir_a(store, flag_down, flag_up, &dir);
+			else if (flag_cnt1 && !flag_cnt2)
+				cost = ft_get_dir_a(store, flag_down, 0, &dir);
+			else if (!flag_cnt1 && flag_cnt2)
+				cost = ft_get_dir_a(store, 0, flag_up, &dir);
 			ft_rotate_stack(store, cost, dir, STACK_A);
 			pb(store);
-		}
-		else if (store->stack_b && dir == UP && cost == 1)
-		{
-			if (store->stack_b->flag == flag_down || store->stack_b->flag == flag_down - 2)
-				rb(store, STACK_B);
-			pb(store);
-			if (!store->stack_a && store->stack_b->flag == flag_down)
+			if (store->stack_b->flag == flag_up)
 				rb(store, STACK_B);
 		}
-		else
+	}
+	else
+	{
+		while (count--)
 		{
-			if (store->stack_b && (store->stack_b->flag == flag_down || store->stack_b->flag == flag_down - 2))
-				rb(store, STACK_B);
-			ft_rotate_stack(store, cost, dir, STACK_A);
-			pb(store);
-			if (store->stack_a && store->stack_b)
+			ft_index(store->stack_a, 0);
+			flag_cnt1 = ft_count_flags(store->stack_a, flag_down);
+			flag_cnt2 = ft_count_flags(store->stack_a, flag_up);
+			if (flag_cnt1 && flag_cnt2)
+				cost = ft_get_dir_a(store, flag_down, flag_up, &dir);
+			else if (flag_cnt1 && !flag_cnt2)
+				cost = ft_get_dir_a(store, flag_down, 0, &dir);
+			else if (!flag_cnt1 && flag_cnt2)
+				cost = ft_get_dir_a(store, 0, flag_up, &dir);
+			if (store->stack_b && dir == UP && rr_flag == true && cost > 1)
 			{
-				if (store->stack_a->flag == flag_down && store->stack_b->flag == flag_down)
+				rr(store);
+				cost -= 1;
+				ft_rotate_stack(store, cost, dir, STACK_A);
+				pb(store);
+			}
+			else if (store->stack_b && dir == UP && cost == 1)
+			{
+				if (store->stack_b->flag == flag_down || store->stack_b->flag == flag_down - 2)
+					rb(store, STACK_B);
+				pb(store);
+				if (!store->stack_a && store->stack_b->flag == flag_down)
 					rb(store, STACK_B);
 			}
+			else
+			{
+				if (store->stack_b && (store->stack_b->flag == flag_down || store->stack_b->flag == flag_down - 2))
+					rb(store, STACK_B);
+				ft_rotate_stack(store, cost, dir, STACK_A);
+				pb(store);
+				if (store->stack_a && store->stack_b)
+				{
+					if (store->stack_a->flag == flag_down && store->stack_b->flag == flag_down)
+						rb(store, STACK_B);
+				}
+			}
+			if (store->stack_b->flag == flag_down)
+				rr_flag = true;
+			else
+				rr_flag = false;
 		}
-		if (store->stack_b->flag == flag_down)
-			rr_flag = true;
-		else
-			rr_flag = false;
 	}
 }
 
@@ -72,14 +94,17 @@ void	ft_push_to_b(t_store *store)
 	int	push_chunks;
 	chunk1 = 1;
 	chunk2 = 2;
-	push_chunks = 5;													
+	push_chunks = 4;
+													
 	while (push_chunks--)
 	{
 		ft_manage_stack_a(store, chunk1, chunk2,
-					store->chunk_size * 2);									
+					store->chunk_size * 2, 0);									
 		chunk1 += 2;
 		chunk2 += 2;
-	}	
+	}
+	ft_manage_stack_a(store, 9, 0,
+					store->chunk_size, 88);			
 }
 
 /////////////////////////////////////////////////////////
@@ -160,6 +185,7 @@ void	ft_algorithm(t_store *store, int copy[])
 	ft_index(store->stack_a, 0);
 	ft_marker(store, store->stack_a, copy, 1);
 	ft_push_to_b(store);
+	ft_sort_less10(store);
 	ft_push_to_a(store, 0, 1, 0);
 	// ft_print_list(store);
 }

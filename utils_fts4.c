@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:07:16 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/03 21:26:16 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:13:30 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ int	ft_find_the_cost2(t_store *store, int *dir, int *to_push)
 		return (cost2);
 	}
 }
+
+void	ft_putstr(char *str)
+{
+	while (*str)
+		write(1, str++, 1);
+}
+
+// void	ft_putstr_fd(char *s, int fd)
+// {
+// 	int	i;
+
+// 	i = -1;
+// 	while (s[++i])              use this!!!!!!!!!
+// 		write(fd, &s[i], 1);
+// }
 
 // void	ft_manage_stack_a(t_store *store)
 // {
