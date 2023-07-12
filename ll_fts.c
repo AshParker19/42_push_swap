@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/10 17:46:12 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:20:32 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_create_stack(int ac, char *av[])
 	store.tail_b = NULL;
 	store.count_a = ac - 1;
 	store.count_b = 0;
-	store.chunk_size = store.count_a / 10;
-	store.percent10 = (store.count_a * 10) / 100;
+	store.chunk_size = 35;
+	store.chunk_num = 14;
 	i = 0;
 	while (++i < ac)
 		store.stack_a = ft_addback(&store, ft_atoi(av[i]));
@@ -46,6 +46,7 @@ void	ft_print_list(t_store *store)
 		printf (RED"    ONLY HEAD\n"RESET);
 	while (current_a)
 	{
+		printf (RED" FLAG %d\n", current_a->flag);
 		printf (SALMON" INDEX %d\n", current_a->index);
 		printf (GREEN" CURRENT_A NUM %d\n"RESET, current_a->value);
 		if (!current_a->prev)

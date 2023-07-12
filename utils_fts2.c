@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:29 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/10 19:49:36 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:21:13 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	ft_marker(t_store *store, t_stack *stack_a, int copy[], int chunk_index)
 	int	range_end;
 
 	pos = ft_find_pos_array(copy, store->count_a, stack_a->value, 0);
-	range_start = (chunk_index - 1) * store->percent10;
-	range_end = chunk_index * store->percent10;
+	range_start = (chunk_index - 1) * store->chunk_size;
+	range_end = chunk_index * store->chunk_size;
 	if (pos >= range_start && pos < range_end)
 		stack_a->flag = chunk_index;
 	if (stack_a->next)
 		ft_marker(store, stack_a->next, copy, chunk_index);
-	else if (chunk_index < 10)
+	else if (chunk_index < store->chunk_num)
 		ft_marker(store, store->stack_a, copy, chunk_index + 1);
 }
 
@@ -95,27 +95,3 @@ int	ft_count_flags(t_stack *stack_a, int find_flag)
 	else
 		return (ft_count_flags(stack_a->next, find_flag));
 }
-
-// void	ft_sort_back10(t_store *store)
-// {
-// 	int	smallest_index;
-// 	int	i;
-// 	int	j;
-// 	int	save;
-// 	i = 10;
-	
-// 	while (i)
-// 	{
-// 		store->smallest = INT_MAX;
-// 		ft_find_the_smallest(store, store->stack_a, 0);
-// 		smallest_index = ft_find_position(store->stack_a, store->smallest);
-// 		if (smallest_index <= i)
-// 			while (store->stack_a->value != store->smallest)
-// 				ra(store, STACK_A);
-// 		else
-// 			while (store->stack_a->value != store->smallest)
-// 				rra(store, STACK_A);
-// 		pb(store);
-// 		i--;
-// 	}
-// }

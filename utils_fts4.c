@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:07:16 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/09 22:13:30 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/11 22:34:43 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ int	ft_find_the_cost2(t_store *store, int *dir, int *to_push)
 	}
 }
 
+int	ft_chunk_sum(t_stack *stack_a, int find_flag)
+{
+	if (!stack_a)
+		return (0);
+	if (stack_a->flag == find_flag)
+		return (stack_a->value
+			+ ft_chunk_sum(stack_a->next, find_flag));
+	else
+		return (ft_chunk_sum(stack_a->next, find_flag));
+}
+
+
 void	ft_putstr(char *str)
 {
 	while (*str)
@@ -53,35 +65,4 @@ void	ft_putstr(char *str)
 // 	i = -1;
 // 	while (s[++i])              use this!!!!!!!!!
 // 		write(fd, &s[i], 1);
-// }
-
-// void	ft_manage_stack_a(t_store *store)
-// {
-// 	int	cost;
-// 	int	dir;
-// 	int flag1 = 1;
-// 	int flag2 = 2;
-// 	int	flag_cnt1;
-// 	int	flag_cnt2;
-
-// 	while (store->stack_a)
-// 	{
-// 		ft_index(store->stack_a, 0);
-// 		flag_cnt1 = ft_count_flags(store->stack_a, flag1);
-// 		if (flag_cnt1 == 0)
-// 			flag1 += 2;
-// 		flag_cnt2 = ft_count_flags(store->stack_a, flag2);
-// 		if (flag_cnt2 == 0)
-// 			flag2 += 2;
-// 		if (flag_cnt1 && flag_cnt2)
-// 			cost = ft_get_dir_a(store, flag1, flag2, &dir);
-// 		else if (flag_cnt1 && !flag_cnt2)
-// 			cost = ft_get_dir_a(store, flag1, 0, &dir);
-// 		else if (!flag_cnt1 && flag_cnt2)
-// 			cost = ft_get_dir_a(store, 0, flag2, &dir);
-// 		ft_rotate_stack(store, cost, dir, STACK_A);
-// 		pb(store);
-// 		if (store->stack_b->flag == flag2)
-// 			rb(store, STACK_B);	
-// 	}
 // }

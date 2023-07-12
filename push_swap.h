@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/10 14:58:14 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:06:41 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 // range
 # define BIGGEST		 8
 # define SND_BIGGEST	 9
-
 /*************************/
 
 // colors for testing
@@ -65,7 +64,7 @@ typedef struct s_store
 	int		count_a;
 	int		count_b;
 	int		chunk_size;
-	int		percent10;
+	int		chunk_num;
 	int		biggest;
 	int		snd_biggest;
 	int		smallest;
@@ -100,6 +99,18 @@ void		ft_sort_4_5(t_store *store, int save);
 void		ft_sort_less10(t_store *store);
 void		ft_algorithm(t_store *store, int copy[]);
 
+/********************** algorithm **********************/
+// push to b
+void	ft_push_b_main(t_store *store);
+void	ft_push_pairs(t_store *store, int flag_down, int flag_up, int count);
+void    ft_push_the_rest(t_store *store, int count, int chunk_index);
+int		ft_manage_details(t_store *store, int bottom_flag, int top_flag, int *dir);
+void    ft_manage_rr(t_store *store, int cost, int dir);
+void    ft_manage_top_a(t_store *store, int bottom_flag);
+void    ft_manage_rra(t_store *store, int cost, int dir, int bottom_flag);
+void	ft_manage_rra2(t_store *store, int cost, int dir, int mean);
+/*******************************************************/
+
 // sorting utils
 void		ft_find_the_smallest(t_store *store, t_stack *stack_a, int i);
 void		ft_index(t_stack *stack_a, int i);
@@ -115,6 +126,7 @@ void		ft_rotate_stack(t_store *store, int cost, int dir, int stack_flag);
 int			ft_count_flags(t_stack *stack_a, int find_flag);
 int			ft_closer(t_store *store, int flag, int *dir);
 void		ft_1st_2nd(t_store *store, t_stack *stack_b, int i);
+int 		ft_chunk_sum(t_stack *stack_a, int find_flag);
 
 // parsing
 int			ft_valid(int ac, char *av[]);
@@ -137,5 +149,7 @@ void		ft_bzero(void *s, size_t n);
 char		*ft_strchr(const char *s, int c);
 char		**ft_recursive_split(char *str, char *arr[], int count, char *charset);
 
+
+void	ft_manage_stack_a(t_store *store, int flag_down, int flag_up, int count, int flag);
 #endif
 
