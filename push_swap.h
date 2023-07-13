@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/12 13:06:41 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:51:16 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,22 @@ void		ft_sort_4_5(t_store *store, int save);
 void		ft_sort_less10(t_store *store);
 void		ft_algorithm(t_store *store, int copy[]);
 
-/********************** algorithm **********************/
+/************************************** algorithm **************************************/
 // push to b
-void	ft_push_b_main(t_store *store);
-void	ft_push_pairs(t_store *store, int flag_down, int flag_up, int count);
-void    ft_push_the_rest(t_store *store, int count, int chunk_index);
-int		ft_manage_details(t_store *store, int bottom_flag, int top_flag, int *dir);
-void    ft_manage_rr(t_store *store, int cost, int dir);
-void    ft_manage_top_a(t_store *store, int bottom_flag);
-void    ft_manage_rra(t_store *store, int cost, int dir, int bottom_flag);
-void	ft_manage_rra2(t_store *store, int cost, int dir, int mean);
-/*******************************************************/
+void		ft_push_b_main(t_store *store);
+void		ft_push_pairs(t_store *store, int flag_down, int flag_up, int count);
+void    	ft_push_the_rest(t_store *store, int count, int chunk_index);
+int			ft_manage_details(t_store *store, int bottom_flag, int top_flag, int *dir);
+void    	ft_manage_rr(t_store *store, int cost, int dir);
+void    	ft_manage_top_a(t_store *store, int bottom_flag);
+void    	ft_manage_rra(t_store *store, int cost, int dir, int bottom_flag);
+void		ft_manage_rra2(t_store *store, int cost, int dir, int mean);
+// push to a
+void		ft_push_to_a(t_store *store, int count, int first, int dir);
+void		ft_manage_snd_biggest(t_store *store, int *count, int to_push);
+void		ft_rollback(t_store *store, int ra_count);
+int			ft_manage_sb(t_store *store);
+/***************************************************************************************/
 
 // sorting utils
 void		ft_find_the_smallest(t_store *store, t_stack *stack_a, int i);
@@ -130,7 +135,6 @@ int 		ft_chunk_sum(t_stack *stack_a, int find_flag);
 
 // parsing
 int			ft_valid(int ac, char *av[]);
-int			ft_valid2(char *in_quotes);
 int			ft_checker(int ac, char *av[]);
 int			ft_checker2(int ac, char *av[]);
 int			ft_numeric(char *str);
@@ -149,7 +153,4 @@ void		ft_bzero(void *s, size_t n);
 char		*ft_strchr(const char *s, int c);
 char		**ft_recursive_split(char *str, char *arr[], int count, char *charset);
 
-
-void	ft_manage_stack_a(t_store *store, int flag_down, int flag_up, int count, int flag);
 #endif
-

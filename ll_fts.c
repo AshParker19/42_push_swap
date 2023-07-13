@@ -6,11 +6,36 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/11 22:20:32 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/13 14:04:42 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_initialize_store(t_store *store, int count_a)
+{
+	store->stack_a = NULL;
+	store->stack_b = NULL;
+	store->tail_a = NULL;
+	store->tail_b = NULL;
+	store->count_a = count_a;
+	store->count_b = 0;
+	if (count_a == 100)
+	{
+		store->chunk_size = 12;
+		store->chunk_num = 8;
+	}
+	else if (count_a == 500)
+	{
+		store->chunk_size = 35;
+		store->chunk_num = 14;
+	}
+	else
+	{
+		store->chunk_size = store->count_a / 10;
+		store->chunk_num = 10;
+	}
+}
 
 void	ft_create_stack(int ac, char *av[])
 {
@@ -18,14 +43,7 @@ void	ft_create_stack(int ac, char *av[])
 	int			i;
 	int			copy[ac - 1];
 	
-	store.stack_a = NULL;
-	store.stack_b = NULL;
-	store.tail_a = NULL;
-	store.tail_b = NULL;
-	store.count_a = ac - 1;
-	store.count_b = 0;
-	store.chunk_size = 35;
-	store.chunk_num = 14;
+	ft_initialize_store(&store, ac - 1);
 	i = 0;
 	while (++i < ac)
 		store.stack_a = ft_addback(&store, ft_atoi(av[i]));
@@ -143,3 +161,12 @@ t_stack	*ft_free_stack_a(t_stack *stack_a)
 	}
 	return (NULL);
 }
+
+// //////////////////
+// 		if (store->stack_b->value == store->snd_biggest
+// 			&& store->stack_b->next->value == store->biggest)
+// 		{
+// 			sa_sb(store->stack_b, STACK_B);
+// 			continue;
+// 		}	
+// 		/////////////////

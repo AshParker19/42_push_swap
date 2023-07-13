@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:16:19 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/10 14:58:33 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/12 19:10:44 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	ft_numeric(char *str)
 {
 	if (*str == '-' || *str == '+')
 		str++;
+	if (!*str)
+	{
+		ft_putstr("Error\n");
+		exit (NOT_NUMERIC);
+	}	
 	while (*str)
 	{
 		if (!(*str >= '0' && *str <= '9'))
