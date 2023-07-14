@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:47:11 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/08 22:04:31 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:33:00 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	ft_sort_copy(int copy[], int size)
 	i = -1;
 	while (++i < size)
 	{
-		j = i + 1;
-		while (j < size)
+		j = i;
+		while (++j < size)
 		{
 			if (copy[i] > copy[j])
 			{
@@ -38,7 +38,6 @@ void	ft_sort_copy(int copy[], int size)
 				copy[i] = copy[j];
 				copy[j] = swap;
 			}
-			j++;
 		}
 	}
 }
@@ -69,6 +68,6 @@ void	ft_find_the_smallest(t_store *store, t_stack *stack_a, int i)
 		return ;
 	if (stack_a->value < store->smallest)
 		store->smallest = stack_a->value;
-	stack_a->index = i;	
-	ft_find_the_smallest(store, stack_a->next, i + 1);	
+	stack_a->index = i;
+	ft_find_the_smallest(store, stack_a->next, i + 1);
 }

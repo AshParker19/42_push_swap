@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 15:13:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/13 15:56:54 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:03:53 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,14 @@ void	ft_rollback(t_store *store, int ra_count)
 			rra_count--;
 		}
 	}
+}
+
+void	ft_sort_the_remainder(t_store *store)
+{
+	if (store->count_a == 4)
+		ft_sort_4_5(store, 4);
+	else if (store->count_a == 10)
+		ft_sort_less10(store, 1);
+	else 
+		ft_sort_less10(store, 0);
 }

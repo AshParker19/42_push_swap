@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 16:12:37 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/08 22:05:02 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/13 23:04:45 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	sa_sb(t_stack *stack, int flag)
 		stack->value = stack->next->value;
 		stack->next->value = temp;
 		if (flag == STACK_A)
-			ft_putstr("sa\n");
-		else if (flag == STACK_B)	
-			ft_putstr("sb\n");
+			ft_putstr_fd("sa\n", 1);
+		else if (flag == STACK_B)
+			ft_putstr_fd("sb\n", 1);
 	}
 }
 
@@ -32,7 +32,7 @@ void	ss(t_store *store)
 {
 	sa_sb(store->stack_a, NEUTRAL);
 	sa_sb(store->stack_b, NEUTRAL);
-	ft_putstr("ss\n");
+	ft_putstr_fd("ss\n", 1);
 }
 
 void	pb(t_store *store)
@@ -59,7 +59,7 @@ void	pb(t_store *store)
 			store->tail_b = store->stack_b;
 		else if (store->count_a == 0)
 			store->tail_a = NULL;
-		ft_putstr("pb\n");
+		ft_putstr_fd("pb\n", 1);
 	}
 }
 
@@ -87,7 +87,7 @@ void	pa(t_store *store)
 			store->tail_a = store->stack_a;
 		else if (store->count_b == 0)
 			store->tail_b = NULL;
-		ft_putstr("pa\n");
+		ft_putstr_fd("pa\n", 1);
 	}
 }
 
@@ -105,6 +105,6 @@ void	ra(t_store *store, int flag)
 		temp->next = NULL;
 		store->tail_a = temp;
 		if (flag == STACK_A)
-			ft_putstr("ra\n");
+			ft_putstr_fd("ra\n", 1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 13:56:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/05 12:57:39 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:14:00 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rb(t_store *store, int flag)
 		temp->next = NULL;
 		store->tail_b = temp;
 		if (flag == STACK_B)
-			ft_putstr("rb\n");
+			ft_putstr_fd("rb\n", 1);
 	}
 }
 
@@ -34,7 +34,7 @@ void	rr(t_store *store)
 {
 	ra(store, NEUTRAL);
 	rb(store, NEUTRAL);
-	ft_putstr("rr\n");
+	ft_putstr_fd("rr\n", 1);
 }
 
 void	rra(t_store *store, int flag)
@@ -51,7 +51,7 @@ void	rra(t_store *store, int flag)
 		temp->next = store->stack_a;
 		store->stack_a = temp;
 		if (flag == STACK_A)
-			ft_putstr("rra\n");
+			ft_putstr_fd("rra\n", 1);
 	}
 }
 
@@ -69,7 +69,7 @@ void	rrb(t_store *store, int flag)
 		temp->next = store->stack_b;
 		store->stack_b = temp;
 		if (flag == STACK_B)
-			ft_putstr("rrb\n");
+			ft_putstr_fd("rrb\n", 1);
 	}
 }
 
@@ -77,5 +77,5 @@ void	rrr(t_store *store)
 {
 	rra(store, NEUTRAL);
 	rrb(store, NEUTRAL);
-	ft_putstr("rrr\n");
+	ft_putstr_fd("rrr\n", 1);
 }

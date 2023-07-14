@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 19:16:09 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/09 21:36:23 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/13 23:16:06 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ long int	ft_atoi(const char *nptr)
 	}
 	else if (nptr[i] == '+')
 		i++;
-	while (nptr[i] >= '0' && nptr[i] <= '9' && nptr[i])
+	while (nptr[i] && nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		res *= 10;
 		res += nptr[i] - 48;
@@ -59,44 +59,35 @@ long int	ft_atoi(const char *nptr)
 	return (res * sign);
 }
 
-char	*ft_strchr(const char *s, int c)
-{	
-	int				i;
-	unsigned char	c1;
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
-	i = 0;
-	c1 = c;
-	while (s[i])
-	{
-		if (s[i] == c1)
-			return ((char *)s + i);
-		i++;
-	}
-	if (s[i] == c1)
-		return ((char *)s + i);
-	return (NULL);
+	i = -1;
+	while (s[++i])
+		write(fd, &s[i], 1);
 }
 
-char	**ft_recursive_split(char *str, char *arr[], int count, char *charset)
+char	**ft_split(char *str, char *arr[], int count, char c)
 {
 	char	*new_str;
 	int		i;
 
 	i = 0;
 	new_str = 0;
-	while (str && *str && ft_strchr(charset, *str))
+	while (str && *str && *str == c)
 		str++;
-	while (str && str[i] && !ft_strchr(charset, *str))
+	while (str && str[i] && str[i] != c)
 		i++;
 	if (i > 0)
 		new_str = (char *)malloc(i + 1);
 	if (new_str)
 		new_str[i] = 0;
 	i = 0;
-	while (new_str && str && *str && !ft_strchr(charset, *str))
+	while (new_str && str && *str && *str != c)
 		new_str[i++] = *str++;
 	if (new_str)
-		arr = ft_recursive_split(str, arr, count + 1, charset);
+		arr = ft_split(str, arr, count + 1, c);
 	else
 		arr = (char **)malloc(sizeof(char *) * (count + 1));
 	if (arr)

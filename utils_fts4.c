@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:07:16 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/11 22:34:43 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 13:59:05 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,12 @@ int	ft_chunk_sum(t_stack *stack_a, int find_flag)
 		return (ft_chunk_sum(stack_a->next, find_flag));
 }
 
-
-void	ft_putstr(char *str)
+void	ft_rotate_up(t_store *store, int smallest_index, int i)
 {
-	while (*str)
-		write(1, str++, 1);
+	if (smallest_index <= i)
+		while (store->stack_a->value != store->smallest)
+			ra(store, STACK_A);
+	else
+		while (store->stack_a->value != store->smallest)
+			rra(store, STACK_A);
 }
-
-// void	ft_putstr_fd(char *s, int fd)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (s[++i])              use this!!!!!!!!!
-// 		write(fd, &s[i], 1);
-// }
