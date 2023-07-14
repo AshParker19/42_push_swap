@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:47:11 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 11:33:00 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:57:18 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_copy_values(t_stack *stack_a, int copy[], int i)
 {

@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 19:19:55 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/13 15:12:02 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:57:24 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	ft_from_start(t_stack *stack_a, int find_flag)
 {

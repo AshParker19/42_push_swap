@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:56:22 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 13:58:45 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:55:14 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "get_next_line/get_next_line.h"
 
 /**********FLAGS**********/
 // errors

@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 14:08:29 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/11 22:21:13 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:57:22 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_marker(t_store *store, t_stack *stack_a, int copy[], int chunk_index)
 {

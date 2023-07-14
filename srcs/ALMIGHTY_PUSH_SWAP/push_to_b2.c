@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 11:54:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/12 13:39:09 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:56:48 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_manage_rra(t_store *store, int cost, int dir, int bottom_flag)
 {

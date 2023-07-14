@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 21:44:26 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/13 12:49:38 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:56:45 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_push_b_main(t_store *store)
 {

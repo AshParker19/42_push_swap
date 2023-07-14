@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:48:20 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 13:58:58 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:58:01 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	ft_sort_main(t_store *store, int copy[])
 {

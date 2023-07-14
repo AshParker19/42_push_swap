@@ -1,56 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ll_fts.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 14:13:54 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 13:44:27 by anshovah         ###   ########.fr       */
+/*   Created: 2023/07/14 17:24:27 by anshovah          #+#    #+#             */
+/*   Updated: 2023/07/14 21:23:19 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/checker.h"
 
-void	ft_create_stack(int ac, char *av[], int i, int j)
-{
-	t_store		store;
-	int			*copy;
-
-	copy = ft_calloc(ac - 1, sizeof(int));
-	if (!copy)
-		return ;
-	ft_initialize_store(&store, ac - 1);
-	while (++i < ac - j)
-		store.stack_a = ft_addback(&store, ft_atoi(av[i]));
-	ft_sort_main(&store, copy);
-	store.stack_a = ft_free_stack_a(store.stack_a);
-	free (copy);
-}
-
-void	ft_initialize_store(t_store *store, int count_a)
+void    ft_initialize(t_store *store)
 {
 	store->stack_a = NULL;
 	store->stack_b = NULL;
 	store->tail_a = NULL;
 	store->tail_b = NULL;
-	store->count_a = count_a;
+    store->count_a = 0;
 	store->count_b = 0;
-	if (count_a == 100)
+}
+
+t_stack	*ft_free_stack(t_stack *stack_a)
+{
+	if (stack_a)
 	{
-		store->chunk_size = 12;
-		store->chunk_num = 8;
+		ft_free_stack(stack_a->next);
+		free (stack_a);
 	}
-	else if (count_a == 500)
-	{
-		store->chunk_size = 35;
-		store->chunk_num = 14;
-	}
-	else
-	{
-		store->chunk_size = store->count_a / 10;
-		store->chunk_num = 10;
-	}
+	return (NULL);
 }
 
 t_stack	*ft_addback(t_store *store, int new_value)
@@ -73,12 +52,16 @@ t_stack	*ft_addback(t_store *store, int new_value)
 	}
 }
 
-t_stack	*ft_free_stack_a(t_stack *stack_a)
+int	ft_strcmp(char *s1, char *s2)
 {
-	if (stack_a)
-	{
-		ft_free_stack_a(stack_a->next);
-		free (stack_a);
-	}
-	return (NULL);
+	int				i;
+	unsigned char	c1;
+	unsigned char	c2;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	c1 = s1[i];
+	c2 = s2[i];
+	return (c1 - c2);
 }

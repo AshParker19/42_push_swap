@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:07:16 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 13:59:05 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:57:29 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	ft_get_dir_b(t_store *store, int value, int *dir)
 {

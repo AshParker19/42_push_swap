@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations2.c                                      :+:      :+:    :+:   */
+/*   ops2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 13:56:51 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/13 16:14:00 by anshovah         ###   ########.fr       */
+/*   Created: 2023/07/14 18:39:59 by anshovah          #+#    #+#             */
+/*   Updated: 2023/07/14 21:35:44 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/checker.h"
 
-void	rb(t_store *store, int flag)
+void	b_rb(t_store *store)
 {
 	t_stack	*temp;
 
@@ -25,19 +25,16 @@ void	rb(t_store *store, int flag)
 		temp->prev = store->tail_b;
 		temp->next = NULL;
 		store->tail_b = temp;
-		if (flag == STACK_B)
-			ft_putstr_fd("rb\n", 1);
 	}
 }
 
-void	rr(t_store *store)
+void	b_rr(t_store *store)
 {
-	ra(store, NEUTRAL);
-	rb(store, NEUTRAL);
-	ft_putstr_fd("rr\n", 1);
+	b_ra(store);
+	b_rb(store);
 }
 
-void	rra(t_store *store, int flag)
+void	b_rra(t_store *store)
 {
 	t_stack	*temp;
 
@@ -50,12 +47,10 @@ void	rra(t_store *store, int flag)
 		temp->prev = NULL;
 		temp->next = store->stack_a;
 		store->stack_a = temp;
-		if (flag == STACK_A)
-			ft_putstr_fd("rra\n", 1);
 	}
 }
 
-void	rrb(t_store *store, int flag)
+void	b_rrb(t_store *store)
 {
 	t_stack	*temp;
 
@@ -68,14 +63,11 @@ void	rrb(t_store *store, int flag)
 		temp->prev = NULL;
 		temp->next = store->stack_b;
 		store->stack_b = temp;
-		if (flag == STACK_B)
-			ft_putstr_fd("rrb\n", 1);
 	}
 }
 
-void	rrr(t_store *store)
+void	b_rrr(t_store *store)
 {
-	rra(store, NEUTRAL);
-	rrb(store, NEUTRAL);
-	ft_putstr_fd("rrr\n", 1);
+	b_rra(store);
+	b_rrb(store);
 }

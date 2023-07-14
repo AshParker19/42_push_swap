@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:45:29 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 13:03:42 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:55:45 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	ft_almighty_ps(t_store *store, int copy[])
 {

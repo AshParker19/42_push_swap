@@ -6,11 +6,11 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:00:34 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/13 22:42:56 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:57:53 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	main(int ac, char *av[])
 {

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations1.c                                      :+:      :+:    :+:   */
+/*   ops1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 16:12:37 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/13 23:04:45 by anshovah         ###   ########.fr       */
+/*   Created: 2023/07/14 18:38:02 by anshovah          #+#    #+#             */
+/*   Updated: 2023/07/14 21:35:32 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/checker.h"
 
-void	sa_sb(t_stack *stack, int flag)
+void	b_sa_sb(t_stack *stack)
 {
 	int	temp;
 
@@ -21,21 +21,16 @@ void	sa_sb(t_stack *stack, int flag)
 		temp = stack->value;
 		stack->value = stack->next->value;
 		stack->next->value = temp;
-		if (flag == STACK_A)
-			ft_putstr_fd("sa\n", 1);
-		else if (flag == STACK_B)
-			ft_putstr_fd("sb\n", 1);
 	}
 }
 
-void	ss(t_store *store)
+void	b_ss(t_store *store)
 {
-	sa_sb(store->stack_a, NEUTRAL);
-	sa_sb(store->stack_b, NEUTRAL);
-	ft_putstr_fd("ss\n", 1);
+	b_sa_sb(store->stack_a);
+	b_sa_sb(store->stack_b);
 }
 
-void	pb(t_store *store)
+void	b_pb(t_store *store)
 {
 	t_stack	*temp;
 
@@ -59,11 +54,10 @@ void	pb(t_store *store)
 			store->tail_b = store->stack_b;
 		else if (store->count_a == 0)
 			store->tail_a = NULL;
-		ft_putstr_fd("pb\n", 1);
 	}
 }
 
-void	pa(t_store *store)
+void	b_pa(t_store *store)
 {
 	t_stack	*temp;
 
@@ -87,11 +81,10 @@ void	pa(t_store *store)
 			store->tail_a = store->stack_a;
 		else if (store->count_b == 0)
 			store->tail_b = NULL;
-		ft_putstr_fd("pa\n", 1);
 	}
 }
 
-void	ra(t_store *store, int flag)
+void	b_ra(t_store *store)
 {
 	t_stack	*temp;
 
@@ -104,7 +97,5 @@ void	ra(t_store *store, int flag)
 		temp->prev = store->tail_a;
 		temp->next = NULL;
 		store->tail_a = temp;
-		if (flag == STACK_A)
-			ft_putstr_fd("ra\n", 1);
 	}
 }
