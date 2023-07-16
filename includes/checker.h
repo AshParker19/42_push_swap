@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:08:27 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/14 21:30:45 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/15 12:57:42 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_stack		*ft_addback(t_store *store, int new_value);
 t_stack		*ft_free_stack(t_stack *stack_a);
 
 // utils
-int			ft_valid(int ac, char *av[]);
+int			ft_checker_b(int ac, char *av[]);
 void		ft_free_everything(t_store *store, char **ops_store);
 int			ft_strcmp(char *s1, char *s2);
 
