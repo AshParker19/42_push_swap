@@ -6,7 +6,7 @@
 /*   By: anshovah <anshovah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 17:24:27 by anshovah          #+#    #+#             */
-/*   Updated: 2023/07/15 11:47:22 by anshovah         ###   ########.fr       */
+/*   Updated: 2023/07/17 14:36:42 by anshovah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_read_commands(t_store *store)
 		if (!ft_validate_operation(op, ops_store))
 		{
 			ft_free_everything(store, ops_store);
+			free (op);
 			ft_putstr_fd("Error\n", 2);
 			exit (INVALID_OPERATION);
 		}
