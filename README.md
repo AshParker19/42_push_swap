@@ -11,7 +11,7 @@ Implementing a sorting algorithm in C using stack data structure.
 ### Description
 The goal of this project is to sort data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed you'll have to manipulate various types of algorithms and choose the one (of many) most appropriate solution for an optimized data sorting.
 
-- **push_swap** - calculates and displays on the standard output the smallest progam using `push_swap` instruction language that sorts integer arguments received.
+ _**push_swap** - calculates and displays on the standard output the smallest number of moves using `push_swap` instruction language that sorts integer arguments received._
 
 ---
 
@@ -19,15 +19,13 @@ The goal of this project is to sort data on a stack, with a limited set of instr
 `push_swap` is a solo project but we decided to work together to create our own algorithm.
 But the implementation of the algorithm was done individually.
 We acheived 125/100 on this project.
-You can check both of our implementations here:
-- [**@Rajh Phuyal**]((https://github.com/rajh-phuyal/42push_swap))
-- [**@AshParker19**](https://github.com/AshParker19/42_push_swap)
-
+You can check Raj's implementation here:
+- [**@Rajh Phuyal**](https://github.com/rajh-phuyal/42push_swap)
 
 ### Motivation
 We thought creating our own algorithm to sort data would be a fun challenge.
 After a lot of trial and error we finally came up with a solution that works.
-The final verson of the algorithm is a many many iterations of the initial idea.
+The final version of the algorithm is a many many iterations of the initial idea.
 We learned a lot about how to optimize code and how to use the stack data structure.
 This project helped us to improve our problem-solving skills, our ability to work in a team
 and algorithmical thinking.
