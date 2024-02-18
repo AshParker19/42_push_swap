@@ -2,11 +2,6 @@
 Implementing a sorting algorithm in C using stack data structure.
 
 ## Algorithm (Almighty Push Swap)
-<img src="https://github.com/rajh-phuyal/42push_swap/assets/81531002/bb7550cc-9f11-40e5-aa5b-bbe96d871129" alt="APS" style="width: 90vw; height: 65vh;">
-
-![Screenshot from 2023-11-12 23-10-14](https://github.com/rajh-phuyal/42push_swap/assets/117525743/7bc39584-4e91-4f31-bfa7-dbaa781f2705)
-
-
 
 ### Description
 The goal of this project is to sort data on a stack, with a limited set of instructions, using the lowest possible number of actions. To succeed you'll have to manipulate various types of algorithms and choose the one (of many) most appropriate solution for an optimized data sorting.
