@@ -14,7 +14,7 @@ The goal of this project is to sort data on a stack, with a limited set of instr
 `push_swap` is a solo project but we decided to work together to create our own algorithm.
 But the implementation of the algorithm was done individually.
 We acheived 125/100 on this project.
-You can check Raj's implementation here:
+You can check Rajh's implementation here:
 - [**@Rajh Phuyal**](https://github.com/rajh-phuyal/42push_swap)
 
 ### Motivation
