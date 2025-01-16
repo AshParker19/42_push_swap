@@ -1,5 +1,5 @@
 # 42push_swap
-Implementing a sorting algorithm in C using stack data structure.
+Implementing a sorting algorithm in C using custom stack data structure.
 
 ## Algorithm (Almighty Push Swap)
 
